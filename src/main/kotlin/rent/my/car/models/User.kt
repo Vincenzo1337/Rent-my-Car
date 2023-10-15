@@ -1,5 +1,8 @@
 package rent.my.car.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class User(
     val name: String,
     val email: String,
@@ -40,3 +43,11 @@ data class DrivingBehavior(
     val accelerationOnStart: Double,
     val deceleration: Double
 )
+
+object UserDatabase {
+    val users: List<User> = listOf(
+        User("User1", "user1@example.com", "password1", Role.OWNER),
+        User("User2", "user2@example.com", "password2", Role.RENTER),
+        User("User3", "user3@example.com", "password3", Role.OWNER)
+    )
+}

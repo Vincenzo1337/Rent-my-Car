@@ -9,7 +9,7 @@ data class CarDTO(
     val type: String,
     val category: CarCategory,
 //    val price: Double,
-//    val owner: UserDTO,
+    val owner: UserDTO,
 //    val rentalConditions: CarRentalConditions,
 )
 

@@ -4,9 +4,9 @@ data class Car(
     val brand: String,
     val type: String,
     val category: CarCategory,
-    val rentalConditions: RentalConditions,
-//    val owner: User,
-    val photos: List<String>
+//    val rentalConditions: RentalConditions,
+    val owner: User,
+//    val photos: List<String>
 )
 
 enum class CarCategory {
