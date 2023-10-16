@@ -20,3 +20,4 @@ data class BonusPointsDTO(
     val points: Int
 )
 
+
