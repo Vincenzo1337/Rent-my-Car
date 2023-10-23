@@ -1,6 +1,5 @@
 package rent.my.car.plugins
 
-import rent.my.car.routes.userProfileRouting
 import rent.my.car.routes.userRouting
 import rent.my.car.routes.carRouting
 import io.ktor.http.*
@@ -39,7 +38,6 @@ fun Application.configureRouting() {
     routing {
         carRouting()
         userRouting()
-        userProfileRouting()
     }
 }
 
@@ -52,5 +50,5 @@ class WrongSigninException : Throwable("wrong signing in credentials")
 // for stage 3/5
 class InvalidUpdateMeException : Throwable()
 
-// for stage 4/5
+
 class AccessDeniedException : Throwable()

@@ -2,24 +2,42 @@ package rent.my.car.dao
 
 import rent.my.car.dto.CarDTO
 import rent.my.car.dto.UserDTO
-import rent.my.car.models.CarCategory
-import rent.my.car.models.Role
-import rent.my.car.models.User
-import rent.my.car.models.UserDatabase
+import rent.my.car.models.*
 
 object DaoInMemoryCar : DAOFacadeCar {
+    private val users = listOf(
+        UserDTO(name = "Vincent", email = "Vincentman169@gmail.com", role = Role.OWNER, id = 1, drivingBehavior = DrivingBehavior.good),
+        UserDTO(
+            name = "Kayal",
+            email = "Kayal@gmail.com",
+            role = Role.RENTER,
+            id = 2,
+            drivingBehavior = DrivingBehavior.bad
+        ),
+        UserDTO(
+            name = "Casper",
+            email = "Casper@gmail.com",
+            role = Role.RENTER,
+            id = 3,
+            drivingBehavior = DrivingBehavior.good
+        )
+    )
 
-    // All cars without details and users
+    // Counter om bij te houden welke gebruiker de volgende is
+    private var userCounter = 0
+
     override suspend fun allCars(): List<CarDTO> = cars.values.map { car ->
+        // Selecteer de gebruiker op basis van de huidige userCounter
+        val user = users[userCounter % users.size]
+
+        // Verhoog de counter voor de volgende oproep
+        userCounter++
+
         CarDTO(
             brand = car.brand,
             type = car.type,
             category = car.category,
-//            rentalConditions = CarRentalConditions())
-//            Create own user like line: 25 of 53, in de DAOInMemoryUser
-//            Of bij de UserDTO meteen een aantaal users defineren
-            owner = UserDTO(name = "Vincent", email = "Vincentman169@gmail.com", role = Role.OWNER)
-
+            owner = user
         )
     }
 
@@ -41,7 +59,9 @@ object DaoInMemoryCar : DAOFacadeCar {
             val userDTO = UserDTO(
                 name = carD.user.name,
                 email = carD.user.email,
-                role = carD.user.role
+                role = carD.user.role,
+                id = carD.user.id,
+                drivingBehavior = carD.user.drivingBehavior
             )
             return CarDTO(
                 brand = carD.brand,

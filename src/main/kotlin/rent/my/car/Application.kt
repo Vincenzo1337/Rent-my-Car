@@ -1,6 +1,5 @@
 package rent.my.car
 
-import rent.my.car.dao.DatabaseFactory
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -14,7 +13,6 @@ fun main() {
 }
 
 fun Application.module() {
-    DatabaseFactory.init()
     configureSerialization()
     configureSecurity()
     configureRouting()

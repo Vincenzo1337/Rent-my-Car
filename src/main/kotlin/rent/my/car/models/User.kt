@@ -2,12 +2,16 @@ package rent.my.car.models
 
 import kotlinx.serialization.Serializable
 
+
+
 @Serializable
 data class User(
     val name: String,
     val email: String,
     val password: String,
-    val role: Role
+    val role: Role,
+    val id:  Int,
+    val drivingBehavior: DrivingBehavior,
 )
 
 enum class Role {
@@ -38,16 +42,22 @@ data class BonusPoints(
     // }
 }
 
-data class DrivingBehavior(
-    val distanceDriven: Double,
-    val accelerationOnStart: Double,
-    val deceleration: Double
-)
+//data class DrivingBehavior(
+//    val distanceDriven: Double,
+//    val accelerationOnStart: Double,
+//    val deceleration: Double
+//)
+enum class DrivingBehavior{
+    good,
+    bad,
+    none
+
+}
 
 object UserDatabase {
     val users: List<User> = listOf(
-        User("User1", "user1@example.com", "password1", Role.OWNER),
-        User("User2", "user2@example.com", "password2", Role.RENTER),
-        User("User3", "user3@example.com", "password3", Role.OWNER)
+        User("User1", "user1@example.com", "password1", Role.OWNER, 0, DrivingBehavior.none),
+        User("User2", "user2@example.com", "password2", Role.RENTER, 2, DrivingBehavior.bad),
+        User("User3", "user3@example.com", "password3", Role.OWNER, 3, DrivingBehavior.good)
     )
 }
