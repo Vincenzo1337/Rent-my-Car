@@ -1,5 +1,8 @@
 package rent.my.car.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Car(
     val brand: String,
     val type: String,

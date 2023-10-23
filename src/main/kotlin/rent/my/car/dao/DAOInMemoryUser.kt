@@ -1,8 +1,6 @@
 package rent.my.car.dao
 
 import rent.my.car.dto.UserDTO
-import rent.my.car.models.Role
-import rent.my.car.models.User
 import rent.my.car.models.UserDatabase
 import rent.my.user.dao.DAOFacadeUser
 
@@ -12,7 +10,9 @@ object DaoInMemoryUser : DAOFacadeUser {
         UserDTO(
             name = user.name,
             email = user.email,
-            role = user.role
+            role = user.role,
+            id = user.id,
+            drivingBehavior = user.drivingBehavior
         )
     }
 }
@@ -24,7 +24,9 @@ fun getUsersByIds(ids: List<Int>): List<UserDTO> {
             UserDTO(
                 name = user.name,
                 email = user.email,
-                role = user.role
+                role = user.role,
+                id = user.id,
+                drivingBehavior = user.drivingBehavior
             )
         }
     }
@@ -37,7 +39,9 @@ fun getUserById(id: Int): UserDTO? {
         UserDTO(
             name = user.name,
             email = user.email,
-            role = user.role
+            role = user.role,
+            id = user.id,
+            drivingBehavior = user.drivingBehavior
         )
     }
 }
