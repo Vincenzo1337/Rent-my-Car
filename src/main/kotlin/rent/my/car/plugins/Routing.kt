@@ -26,12 +26,18 @@ fun Application.configureRouting() {
                 hashMapOf("status" to "Access denied"),
             )
         }
+
+//toegang wordt geweigerd tot bepaalde delen van de applicatie.
+
         exception<InvalidUpdateMeException> { call, _ ->
             call.respond(
                 HttpStatusCode.BadRequest,
                 hashMapOf("status" to "cannot update user with different email"),
             )
         }
+
+//geeft foutmelding terug bij bewerken van gebruiker niet toegestaan 
+
         exception<Throwable> { call, cause ->
             call.respondText(text = "500: $cause", status = HttpStatusCode.InternalServerError)
         }
