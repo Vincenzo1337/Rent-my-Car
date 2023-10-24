@@ -17,6 +17,8 @@ object DaoInMemoryUser : DAOFacadeUser {
     }
 }
 
+//  omzet in UserDTO-objecten
+
 fun getUsersByIds(ids: List<Int>): List<UserDTO> {
     return ids.mapNotNull { id ->
         val user = UserDatabase.users.getOrNull(id - 1) // -1 omdat de ID's in de lijst met gebruikers bij 1 beginnen
@@ -32,9 +34,10 @@ fun getUsersByIds(ids: List<Int>): List<UserDTO> {
     }
 }
 
+// als id niet word gevonden, wordt deze overgeslagen en niet opgenomen in de resulterende lijst.
 
 fun getUserById(id: Int): UserDTO? {
-    val user = UserDatabase.users.getOrNull(id - 1) // -1 omdat de ID's in de lijst met gebruikers bij 1 beginnen
+    val user = UserDatabase.users.getOrNull(id - 1) // -1 omdat de ID's in de lijst met gebruikers bij 1 beginnen 
     return user?.let {
         UserDTO(
             name = user.name,
@@ -46,5 +49,6 @@ fun getUserById(id: Int): UserDTO? {
     }
 }
 
+//Als de gebruiker niet wordt gevonden, wordt null geretourneerd.
 
 
