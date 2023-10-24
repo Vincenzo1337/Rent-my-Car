@@ -17,7 +17,7 @@ object DaoInMemoryUser : DAOFacadeUser {
     }
 }
 
-//  omzet in UserDTO-objecten
+//  Binnen deze klasse wordt een methode allUsers geïmplementeerd die een lijst van "UserDTO" objecten retourneert.
 
 fun getUsersByIds(ids: List<Int>): List<UserDTO> {
     return ids.mapNotNull { id ->
