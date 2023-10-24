@@ -18,6 +18,8 @@ fun Application.configureRouting() {
             )
         }
 
+//melding als gebruiker al bestaat, retourtneert 403 error. 
+
         exception<AccessDeniedException> { call, _ ->
             call.respond(
                 HttpStatusCode.Forbidden,
