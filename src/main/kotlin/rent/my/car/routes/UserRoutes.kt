@@ -2,8 +2,10 @@ package rent.my.car.routes
 
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import rent.my.car.dto.UserDTO
 import rent.my.car.dao.DaoInMemoryUser as daoUser
 
 fun Route.userRouting() {
@@ -31,4 +33,13 @@ fun Route.userRouting() {
             call.respondText("Invalid user ID", status = HttpStatusCode.BadRequest)
         }
     }
+    post("/users") {
+        val userDTO = call.receive<UserDTO>()
+
+        // Voeg de nieuwe gebruiker toe aan de database
+        val newUser = daoUser.addUser(userDTO)
+
+        call.respond(HttpStatusCode.Created, "Gebruiker is aangemaakt")
+    }
+
 }
