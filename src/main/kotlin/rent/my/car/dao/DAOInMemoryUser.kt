@@ -1,7 +1,9 @@
 package rent.my.car.dao
 
 import rent.my.car.dto.UserDTO
-import rent.my.car.models.UserDatabase
+import rent.my.car.models.DrivingBehavior
+import rent.my.car.models.Role
+import rent.my.car.models.User
 import rent.my.user.dao.DAOFacadeUser
 
 object DaoInMemoryUser : DAOFacadeUser {
@@ -15,36 +17,26 @@ object DaoInMemoryUser : DAOFacadeUser {
             drivingBehavior = user.drivingBehavior
         )
     }
-}
 
-fun getUsersByIds(ids: List<Int>): List<UserDTO> {
-    return ids.mapNotNull { id ->
-        val user = UserDatabase.users.getOrNull(id - 1) // -1 omdat de ID's in de lijst met gebruikers bij 1 beginnen
-        user?.let {
-            UserDTO(
-                name = user.name,
-                email = user.email,
-                role = user.role,
-                id = user.id,
-                drivingBehavior = user.drivingBehavior
+    fun getUserById(id: Int): UserDTO? {
+        val userD = UserDatabase.users.find { it.id == id }
+        if (userD != null) {
+            return UserDTO(
+                name = userD.name,
+                email = userD.email,
+                role = userD.role,
+                id = userD.id,
+                drivingBehavior = userD.drivingBehavior
             )
         }
+        return null
     }
 }
 
-
-fun getUserById(id: Int): UserDTO? {
-    val user = UserDatabase.users.getOrNull(id - 1) // -1 omdat de ID's in de lijst met gebruikers bij 1 beginnen
-    return user?.let {
-        UserDTO(
-            name = user.name,
-            email = user.email,
-            role = user.role,
-            id = user.id,
-            drivingBehavior = user.drivingBehavior
-        )
-    }
+object UserDatabase {
+    val users: List<User> = listOf(
+        User("Vincent", "Vincentman169@gmail.com", "password1", Role.OWNER, 1, DrivingBehavior.GOOD),
+        User("Kayal", "Kayal@gmail.com", "password2", Role.RENTER, 2, DrivingBehavior.BAD),
+        User("Casper", "Casper@gmail.com", "password3", Role.OWNER, 3, DrivingBehavior.NONE)
+    )
 }
-
-
-
