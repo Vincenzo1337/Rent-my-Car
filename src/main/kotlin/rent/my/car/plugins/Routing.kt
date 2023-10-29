@@ -18,18 +18,26 @@ fun Application.configureRouting() {
             )
         }
 
+//melding als gebruiker al bestaat, retourtneert 403 error. 
+
         exception<AccessDeniedException> { call, _ ->
             call.respond(
                 HttpStatusCode.Forbidden,
                 hashMapOf("status" to "Access denied"),
             )
         }
+
+//toegang wordt geweigerd tot bepaalde delen van de applicatie.
+
         exception<InvalidUpdateMeException> { call, _ ->
             call.respond(
                 HttpStatusCode.BadRequest,
                 hashMapOf("status" to "cannot update user with different email"),
             )
         }
+
+//geeft foutmelding terug bij bewerken van gebruiker niet toegestaan 
+
         exception<Throwable> { call, cause ->
             call.respondText(text = "500: $cause", status = HttpStatusCode.InternalServerError)
         }
