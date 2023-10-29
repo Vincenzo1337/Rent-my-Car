@@ -6,20 +6,20 @@ import rent.my.car.models.*
 
 object DaoInMemoryCar : DAOFacadeCar {
     private val users = listOf(
-        UserDTO(name = "Vincent", email = "Vincentman169@gmail.com", role = Role.OWNER, id = 1, drivingBehavior = DrivingBehavior.good),
+        UserDTO(name = "Vincent", email = "Vincentman169@gmail.com", role = Role.OWNER, id = 1, drivingBehavior = DrivingBehavior.GOOD),
         UserDTO(
             name = "Kayal",
             email = "Kayal@gmail.com",
             role = Role.RENTER,
             id = 2,
-            drivingBehavior = DrivingBehavior.bad
+            drivingBehavior = DrivingBehavior.BAD
         ),
         UserDTO(
             name = "Casper",
             email = "Casper@gmail.com",
             role = Role.RENTER,
             id = 3,
-            drivingBehavior = DrivingBehavior.good
+            drivingBehavior = DrivingBehavior.GOOD
         )
     )
 

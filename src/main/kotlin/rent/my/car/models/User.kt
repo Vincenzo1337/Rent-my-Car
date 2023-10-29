@@ -21,7 +21,6 @@ enum class Role {
 
 data class RentalAgreement(
     val renter: User,
-    val rentalCar: RentalCar,
     val selectedTimeBlock: TimeBlock,
     val bonusPoints: Int
 ) {
@@ -48,16 +47,10 @@ data class BonusPoints(
 //    val deceleration: Double
 //)
 enum class DrivingBehavior{
-    good,
-    bad,
-    none
+    GOOD,
+    BAD,
+    NONE
 
 }
 
-object UserDatabase {
-    val users: List<User> = listOf(
-        User("User1", "user1@example.com", "password1", Role.OWNER, 0, DrivingBehavior.none),
-        User("User2", "user2@example.com", "password2", Role.RENTER, 2, DrivingBehavior.bad),
-        User("User3", "user3@example.com", "password3", Role.OWNER, 3, DrivingBehavior.good)
-    )
-}
+
