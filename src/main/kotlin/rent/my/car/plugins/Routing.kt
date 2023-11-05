@@ -2,6 +2,7 @@ package rent.my.car.plugins
 
 import rent.my.car.routes.userRouting
 import rent.my.car.routes.carRouting
+import rent.my.car.routes.reservationRouting
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.statuspages.*
@@ -46,6 +47,7 @@ fun Application.configureRouting() {
     routing {
         carRouting()
         userRouting()
+        reservationRouting()
     }
 }
 
