@@ -8,7 +8,7 @@ import rent.my.car.models.TimeBlock
 data class Reservations(
     val userid: Int,
     val car: String,
-    val timeBlock: ReservationsCategory,
+    val timeBlock: TimeBlock,
     val price: Int,
 )
 enum class ReservationsCategory {

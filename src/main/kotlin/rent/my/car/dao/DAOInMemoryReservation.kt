@@ -1,17 +1,31 @@
 package rent.my.car.dao
 
+import java.time.LocalDate
 import Reservations
-import rent.my.car.dto.ReservationDTO
-import rent.my.car.models.*
+
+import rent.my.car.models.TimeBlock
 
 
 object DAOInMemoryReservation : DAOFacadeReservation {
     private val reservations = mutableMapOf<Int, Reservations>()
 
     init {
-        reservations[1] = Reservations(1, "BMW", ReservationsCategory.MONDAY, price = 4)
-        reservations[2] = Reservations(2, "Golf", ReservationsCategory.WEDNESDAY, price = 7)
-        reservations[3] = Reservations(3, "Merrie", ReservationsCategory.FRIDAY, price = 6)
+        val startDate1 = LocalDate.of(2023, 10, 1)
+        val endDate1 = LocalDate.of(2023, 10, 5)
+
+        val startDate2 = LocalDate.of(2023, 10, 6)
+        val endDate2 = LocalDate.of(2023, 10, 10)
+
+        val startDate3 = LocalDate.of(2023, 10, 11)
+        val endDate3 = LocalDate.of(2023, 10, 15)
+
+        val timeBlock1 = TimeBlock(startDate1.toEpochDay(), endDate1.toEpochDay())
+        val timeBlock2 = TimeBlock(startDate2.toEpochDay(), endDate2.toEpochDay())
+        val timeBlock3 = TimeBlock(startDate3.toEpochDay(), endDate3.toEpochDay())
+
+        reservations[1] = Reservations(1, "BMW", timeBlock1, price = 4)
+        reservations[2] = Reservations(2, "Golf", timeBlock2, price = 7)
+        reservations[3] = Reservations(3, "Merrie", timeBlock3, price = 6)
     }
 
     override suspend fun createReservation(reservation: Reservations): Reservations {
@@ -23,10 +37,3 @@ object DAOInMemoryReservation : DAOFacadeReservation {
         return reservations.values.toList()
     }
 }
-
-//    val exampleReservation = Reservations(
-//    reservationId = 1,
-//    userId = User(name = "John Doe", email = "john@example.com", password = "geheim", role = "ROLE", id = 1, drivingBehavior = "GOOD"),
-//    carId = Car(brand = "BMW", type = "Type", category = "ICE"),
-//    timeBlockId = TimeBlock(startTime = 1636094400, endTime = 1636180800)
-//)
