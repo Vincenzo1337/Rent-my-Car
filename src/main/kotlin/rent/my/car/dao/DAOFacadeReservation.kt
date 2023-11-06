@@ -1,10 +1,9 @@
 package rent.my.car.dao
 
 import Reservations
-import rent.my.car.dto.ReservationDTO
 
 interface DAOFacadeReservation {
-    suspend fun allReservations(): List<ReservationDTO>
+    suspend fun allReservations(): List<Reservations>
     suspend fun createReservation(reservation: Reservations): Reservations
 
 }

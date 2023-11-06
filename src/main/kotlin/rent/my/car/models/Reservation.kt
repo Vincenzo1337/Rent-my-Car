@@ -6,8 +6,13 @@ import rent.my.car.models.TimeBlock
 
 @Serializable
 data class Reservations(
-    val reservationId: Int,
-    val userId: User,
-    val carId: Car,
-    val timeBlockId: TimeBlock
+    val userid: Int,
+    val car: String,
+    val timeBlock: TimeBlock,
+    val price: Int,
 )
+enum class ReservationsCategory {
+    MONDAY,
+    WEDNESDAY,
+    FRIDAY
+}
