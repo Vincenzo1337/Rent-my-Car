@@ -33,7 +33,8 @@ fun Route.userRouting() {
             call.respondText("Invalid user ID", status = HttpStatusCode.BadRequest)
         }
     }
-    post("/user/add") {
+
+    post("/add/user") {
         val userDTO = call.receive<UserDTO>()
 
         val newUser = daoUser.addUser(userDTO)
