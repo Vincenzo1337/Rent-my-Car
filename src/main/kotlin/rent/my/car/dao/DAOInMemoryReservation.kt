@@ -2,21 +2,27 @@ package rent.my.car.dao
 
 import Reservations
 import rent.my.car.dto.ReservationDTO
+import rent.my.car.models.*
 
 
 object DAOInMemoryReservation : DAOFacadeReservation {
-    private val reservations = mutableListOf<Reservations>()
+    private val reservations = mutableMapOf<Int, Reservations>()
+
+    init {
+        reservations[1] = Reservations(1, "BMW", ReservationsCategory.MONDAY, price = 4)
+        reservations[2] = Reservations(2, "Golf", ReservationsCategory.WEDNESDAY, price = 7)
+        reservations[3] = Reservations(3, "Merrie", ReservationsCategory.FRIDAY, price = 6)
+    }
 
     override suspend fun createReservation(reservation: Reservations): Reservations {
-        reservations.add(reservation)
+        reservations[reservation.userid] = reservation
         return reservation
     }
 
-    override suspend fun allReservations(): List<ReservationDTO> {
-        return allReservations()
+    override suspend fun allReservations(): List<Reservations> {
+        return reservations.values.toList()
     }
 }
-
 
 //    val exampleReservation = Reservations(
 //    reservationId = 1,

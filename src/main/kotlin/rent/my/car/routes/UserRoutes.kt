@@ -33,7 +33,7 @@ fun Route.userRouting() {
             call.respondText("Invalid user ID", status = HttpStatusCode.BadRequest)
         }
     }
-    post("/users") {
+    post("/add/user") {
         val userDTO = call.receive<UserDTO>()
 
         // Voeg de nieuwe gebruiker toe aan de database
