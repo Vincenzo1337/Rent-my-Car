@@ -13,7 +13,7 @@ object DAOInMemoryReservation : DAOFacadeReservation {
     }
 
     override suspend fun allReservations(): List<ReservationDTO> {
-        return reservations
+        return allReservations()
     }
 }
 
