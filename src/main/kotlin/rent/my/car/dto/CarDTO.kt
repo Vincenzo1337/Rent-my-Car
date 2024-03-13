@@ -2,25 +2,15 @@ package rent.my.car.dto
 
 import kotlinx.serialization.Serializable
 import rent.my.car.models.CarCategory
+import rent.my.car.models.TimeBlock
 
 @Serializable
-data class CarDTO(
+data class HomePageCarDTO(
     val brand: String,
     val type: String,
     val category: CarCategory,
-//    val price: Double,
-    val owner: UserDTO,
-//    val rentalConditions: CarRentalConditions,
-)
-
-@Serializable
-data class CarRentalConditions(
-//    val car: CarDTO,
-    val availability: List<TimeBlockDTO>
-)
-
-@Serializable
-data class TimeBlockDTO(
-    val startTime: Long,
-    val endTime: Long
+    val availability: Boolean,
+//    todo: check user van DAOMemoryCar
+//    val timeBlock: List<TimeBlock>,
+//    val owner: UserDTO,
 )
