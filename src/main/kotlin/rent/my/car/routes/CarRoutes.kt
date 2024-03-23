@@ -13,7 +13,11 @@ fun Route.carRouting() {
     }
 
     get("/cars") {
-        call.respond(daoCar.allCars())
+        if (call.request.queryParameters["search"] != null) {
+            call.respond(daoCar.searchCars(call.request.queryParameters["search"]!!))
+        } else {
+            call.respond(daoCar.allCars())
+        }
     }
 
     get("/car/{id}") {
@@ -30,4 +34,6 @@ fun Route.carRouting() {
             call.respondText("Invalid car ID", status = HttpStatusCode.BadRequest)
         }
     }
+
+
 }
