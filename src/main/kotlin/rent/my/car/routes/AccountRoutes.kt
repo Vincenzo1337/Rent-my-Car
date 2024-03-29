@@ -15,7 +15,7 @@ fun Route.accountRouting() {
         if (DaoInMemoryAccount.login(receivedAccount.userName, receivedAccount.password)) {
             call.respondText("Ingelogd!")
         } else {
-            call.respond(HttpStatusCode.Unauthorized)
+            call.respond(HttpStatusCode.Unauthorized, "Foutieve gebruikersnaam of wachtwoord")
         }
     }
 }
