@@ -54,6 +54,12 @@ object UserDatabase {
     val users = mutableMapOf(
         1 to User("Vincent", "Vincentman169@gmail.com", "password1", Role.OWNER, 1, DrivingBehavior.GOOD),
         2 to User("Kayal", "Kayal@gmail.com", "password2", Role.RENTER, 2, DrivingBehavior.BAD),
-        3 to User("Casper", "Casper@gmail.com", "password3", Role.OWNER, 3, DrivingBehavior.NONE)
+        3 to User("Casper", "Casper@gmail.com", "password3", Role.OWNER, 3, DrivingBehavior.NONE),
+        4 to User("Michael", "Michael@gmail.com", "password4", Role.OWNER, 4, DrivingBehavior.GOOD),
+        5 to User("Herman", "Herman@gmail.com", "password5", Role.RENTER, 5, DrivingBehavior.BAD),
+        6 to User("Jasper", "Jasper@gmail.com", "password6", Role.OWNER, 6, DrivingBehavior.NONE),
+        7 to User("Joost", "Joost@gmail.com", "password7", Role.OWNER, 7, DrivingBehavior.GOOD),
+        8 to User("Jill", "Jill@gmail.com", "password8", Role.RENTER, 8, DrivingBehavior.BAD),
+        9 to User("Kekw", "Kekw@gmail.com", "password9", Role.OWNER, 9, DrivingBehavior.NONE)
     )
 }

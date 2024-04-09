@@ -51,8 +51,13 @@ object DaoInMemoryCar : DAOFacadeCar {
 object CarDatabase {
     val cars = mutableMapOf(
         1 to Car("BMW", "E30", CarCategory.ICE, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[1]!!.id),
-        2 to Car("VW", "Golf", CarCategory.BEV, false, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[2]!!.id),
-        3 to Car("Merrie", "AMG", CarCategory.FCEV, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[3]!!.id),
-        4 to Car("Volvo", "V60", CarCategory.BEV, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[1]!!.id),
+        2 to Car("Volkswagen", "Golf", CarCategory.BEV, false, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[2]!!.id),
+        3 to Car("Mercedes", "AMG", CarCategory.FCEV, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[3]!!.id),
+        4 to Car("Volvo", "V60", CarCategory.BEV, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[4]!!.id),
+        5 to Car("Toyota", "Corolla", CarCategory.ICE, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[5]!!.id),
+        6 to Car("Ford", "Mustang", CarCategory.BEV, false, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[6]!!.id),
+        7 to Car("Honda", "Civic", CarCategory.FCEV, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[7]!!.id),
+        8 to Car("Nissan", "Altima", CarCategory.BEV, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[8]!!.id),
+        9 to Car("Chevrolet", "Silverado", CarCategory.ICE, true, listOf(TimeBlock(startTime = 1000, endTime = 1000)), UserDatabase.users[9]!!.id)
     )
 }
