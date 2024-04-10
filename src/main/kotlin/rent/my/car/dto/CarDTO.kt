@@ -6,6 +6,7 @@ import rent.my.car.models.TimeBlock
 
 @Serializable
 data class HomePageCarDTO(
+    val id: Int,
     val brand: String,
     val type: String,
     val category: CarCategory,

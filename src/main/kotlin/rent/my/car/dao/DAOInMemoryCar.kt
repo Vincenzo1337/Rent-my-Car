@@ -6,8 +6,9 @@ import rent.my.car.models.*
 
 object DaoInMemoryCar : DAOFacadeCar {
 
-    override suspend fun allCars(): List<HomePageCarDTO> = CarDatabase.cars.values.map { car ->
+    override suspend fun allCars(): List<HomePageCarDTO> = CarDatabase.cars.map { (id, car) ->
         HomePageCarDTO(
+            id = id,
             brand = car.brand,
             type = car.type,
             category = car.category,
@@ -19,8 +20,9 @@ object DaoInMemoryCar : DAOFacadeCar {
     }
 
     override suspend fun searchCars(search: String): List<HomePageCarDTO> =
-        CarDatabase.cars.values.filter { car -> car.brand.contains(search) || car.type.contains(search) }.map { car ->
+        CarDatabase.cars.filter { keyValue -> keyValue.value.brand.contains(search) || keyValue.value.type.contains(search) }.map { (id, car) ->
             HomePageCarDTO(
+                id = id,
                 brand = car.brand,
                 type = car.type,
                 category = car.category,
@@ -35,6 +37,7 @@ object DaoInMemoryCar : DAOFacadeCar {
         val car = CarDatabase.cars[id]
         if (car != null) {
             return HomePageCarDTO(
+                id = id,
                 brand = car.brand,
                 type = car.type,
                 category = car.category,
