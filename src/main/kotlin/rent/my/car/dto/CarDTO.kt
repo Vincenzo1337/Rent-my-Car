@@ -13,6 +13,7 @@ data class HomePageCarDTO(
     val availability: Boolean,
 //    todo: check user van DAOMemoryCar
     val timeBlock: List<TimeBlock>,
+    val description: String,
     val ownerId: Int,
     val owner: UserDTO?,
 )

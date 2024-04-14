@@ -9,6 +9,7 @@ data class Car(
     val category: CarCategory,
     val availability: Boolean,
     val timeBlock: List<TimeBlock>,
+    val description: String,
     val ownerId: Int,
 //    val photos: List<String>
 )
