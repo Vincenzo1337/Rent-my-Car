@@ -60,6 +60,7 @@ object UserDatabase {
         6 to User("Jasper", "Jasper@gmail.com", "password6", Role.OWNER, 6, DrivingBehavior.NONE),
         7 to User("Joost", "Joost@gmail.com", "password7", Role.OWNER, 7, DrivingBehavior.GOOD),
         8 to User("Jill", "Jill@gmail.com", "password8", Role.RENTER, 8, DrivingBehavior.BAD),
-        9 to User("Kekw", "Kekw@gmail.com", "password9", Role.OWNER, 9, DrivingBehavior.NONE)
+        9 to User("Kekw", "Kekw@gmail.com", "password9", Role.OWNER, 9, DrivingBehavior.NONE),
+        10 to User("Jax", "Jax@gmail.com", "password10", Role.OWNER, 10, DrivingBehavior.GOOD)
     )
 }
