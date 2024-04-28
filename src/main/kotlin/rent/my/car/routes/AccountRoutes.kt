@@ -18,4 +18,19 @@ fun Route.accountRouting() {
             call.respond(HttpStatusCode.Unauthorized, "Foutieve gebruikersnaam of wachtwoord")
         }
     }
+
+    post("/register") {
+        val newAccount = call.receive<Account>()
+        if (DaoInMemoryAccount.register(newAccount)) {
+            call.respondText("Registratie voltooid!")
+        } else {
+            call.respond(HttpStatusCode.Conflict, "Gebruikersnaam is al in gebruik")
+        }
+    }
+
+    get("/accounts") {
+        val accounts = DaoInMemoryAccount.getAccounts()
+        call.respond(accounts)
+    }
 }
+
