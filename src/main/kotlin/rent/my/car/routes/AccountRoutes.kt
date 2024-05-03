@@ -32,5 +32,19 @@ fun Route.accountRouting() {
         val accounts = DaoInMemoryAccount.getAccounts()
         call.respond(accounts)
     }
+
+    get("/account/{username}") {
+        val username = call.parameters["username"]
+        if (username != null) {
+            val account = DaoInMemoryAccount.getAccounts().find { it.userName == username }
+            if (account != null) {
+                call.respond(account)
+            } else {
+                call.respond(HttpStatusCode.NotFound, "Gebruiker niet gevonden")
+            }
+        } else {
+            call.respond(HttpStatusCode.BadRequest, "Ongeldige gebruikersnaam")
+        }
+    }
 }
 
