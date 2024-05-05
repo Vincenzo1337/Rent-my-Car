@@ -7,4 +7,5 @@ interface DAOFacadeAccount {
     suspend fun login(username:String, password:String): Boolean
     suspend fun register(account: Account): Boolean
     suspend fun getAccounts(): List<Account>
+    suspend fun updateAccount(updatedAccount: Account): Boolean
 }

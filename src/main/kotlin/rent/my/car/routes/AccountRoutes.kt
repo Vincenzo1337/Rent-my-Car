@@ -46,5 +46,39 @@ fun Route.accountRouting() {
             call.respond(HttpStatusCode.BadRequest, "Ongeldige gebruikersnaam")
         }
     }
+
+    put("/account/{username}") {
+        val username = call.parameters["username"]
+        val updatedAccount = call.receive<Account>()
+        if (username != null) {
+            val originalAccount = DaoInMemoryAccount.getAccounts().find { it.userName == username }
+            if (originalAccount != null) {
+                if (updatedAccount.userName != originalAccount.userName ||
+                    updatedAccount.userId != originalAccount.userId ||
+                    updatedAccount.email != originalAccount.email) {
+                    call.respond(HttpStatusCode.BadRequest, "Alleen phone en password mogen worden bijgewerkt")
+                } else if (DaoInMemoryAccount.updateAccount(updatedAccount)) {
+                    call.respond(HttpStatusCode.OK, "Profiel succesvol bijgewerkt")
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Update mislukt")
+                }
+            } else {
+                call.respond(HttpStatusCode.NotFound, "Gebruiker niet gevonden")
+            }
+        } else {
+            call.respond(HttpStatusCode.BadRequest, "Geen username opgegeven")
+        }
+    }
 }
 
+
+/*
+put("/account/{username}") {
+    val username = call.parameters["username"]
+    val updatedAccount = call.receive<Account>()
+    if (username != null && DaoInMemoryAccount.updateAccount(updatedAccount)) {
+        call.respond(HttpStatusCode.OK, "Profiel succesvol bijgewerkt")
+    } else {
+        call.respond(HttpStatusCode.NotFound, "Gebruiker niet gevonden of update mislukt")
+    }
+}*/

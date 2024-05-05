@@ -32,8 +32,17 @@ object DaoInMemoryAccount : DAOFacadeAccount {
     override suspend fun getAccounts(): List<Account> {
         return AccountDatabase.accounts.toList()
     }
-}
 
+    override suspend fun updateAccount(updatedAccount: Account): Boolean {
+        val accountIndex = AccountDatabase.accounts.indexOfFirst { it.userId == updatedAccount.userId }
+        return if (accountIndex != -1) {
+            AccountDatabase.accounts[accountIndex] = updatedAccount
+            true
+        } else {
+            false
+        }
+    }
+}
 
 object AccountDatabase {
     val accounts = mutableListOf(
