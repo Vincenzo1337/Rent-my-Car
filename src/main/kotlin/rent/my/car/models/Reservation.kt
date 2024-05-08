@@ -1,13 +1,11 @@
 
 import kotlinx.serialization.Serializable
-import rent.my.car.models.User
-import rent.my.car.models.Car
 import rent.my.car.models.TimeBlock
 
 @Serializable
-data class Reservations(
+data class Reservation(
     val userid: Int,
-    val car: String,
+    val carId: Int,
     val timeBlock: TimeBlock,
     val price: Int,
 )
