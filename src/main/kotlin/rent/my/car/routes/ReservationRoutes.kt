@@ -6,6 +6,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import rent.my.car.dao.DAOInMemoryReservation
+import java.time.LocalDate
 
 fun Route.reservationRouting() {
 
@@ -19,9 +20,9 @@ fun Route.reservationRouting() {
             call.respondText("Invalid car id")
             return@get
         }
-        val now = System.currentTimeMillis()
+        val now = LocalDate.now().toEpochDay()
         val reservations = DAOInMemoryReservation.allReservations().filter { it.carId == carId }
-        call.respond(reservations.none { reservation -> reservation.timeBlock.startTime < now && reservation.timeBlock.endTime > now })
+        call.respond(reservations.none { reservation -> reservation.timeBlock.startTime <= now && reservation.timeBlock.endTime >= now })
     }
 
     post("/reservations") {
