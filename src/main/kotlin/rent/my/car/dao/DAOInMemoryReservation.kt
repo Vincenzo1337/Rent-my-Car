@@ -7,7 +7,7 @@ import rent.my.car.models.TimeBlock
 
 
 object DAOInMemoryReservation : DAOFacadeReservation {
-    private val reservation = mutableMapOf<Int, Reservation>()
+    private val reservation = mutableListOf<Reservation>()
 
     init {
         val startDate1 = LocalDate.of(2024, 5, 1)
@@ -23,17 +23,17 @@ object DAOInMemoryReservation : DAOFacadeReservation {
         val timeBlock2 = TimeBlock(startDate2.toEpochDay(), endDate2.toEpochDay())
         val timeBlock3 = TimeBlock(startDate3.toEpochDay(), endDate3.toEpochDay())
 
-        reservation[1] = Reservation(1, 1, timeBlock1, price = 4)
-        reservation[2] = Reservation(2, 2, timeBlock2, price = 7)
-        reservation[3] = Reservation(3, 3, timeBlock3, price = 6)
+        reservation.add(Reservation(1, 1, timeBlock1, price = 4))
+        reservation.add(Reservation(2, 2, timeBlock2, price = 7))
+        reservation.add(Reservation(3, 3, timeBlock3, price = 6))
     }
 
     override suspend fun createReservation(reservation: Reservation): Reservation {
-        this.reservation[reservation.userid] = reservation
+        this.reservation.add(reservation)
         return reservation
     }
 
     override suspend fun allReservations(): List<Reservation> {
-        return reservation.values.toList()
+        return reservation.toList()
     }
 }
