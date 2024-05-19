@@ -40,4 +40,14 @@ fun Route.reservationRouting() {
         DAOInMemoryReservation.createReservation(receivedReservation)
         call.respondText("Reservering toegevoegd!")
     }
+
+    get("/reservations/account/{userid}") {
+        val userid = call.parameters["userid"]?.toIntOrNull()
+        if (userid == null) {
+            call.respond(HttpStatusCode.BadRequest, "Invalid account ID")
+            return@get
+        }
+        val reservations = DAOInMemoryReservation.allReservations().filter { it.userid == userid }
+        call.respond(reservations)
+    }
 }
