@@ -9,7 +9,9 @@ import rent.my.car.models.TimeBlock
 object DAOInMemoryReservation : DAOFacadeReservation {
     private val reservation = mutableListOf<Reservation>()
 
-    init {
+
+    // Dummy Reservations voor API testen.
+    /*init {
         val startDate1 = LocalDate.of(2024, 5, 1)
         val endDate1 = LocalDate.of(2024, 5, 5)
 
@@ -26,7 +28,7 @@ object DAOInMemoryReservation : DAOFacadeReservation {
         reservation.add(Reservation(1, 1, timeBlock1, price = 4))
         reservation.add(Reservation(2, 2, timeBlock2, price = 7))
         reservation.add(Reservation(3, 3, timeBlock3, price = 6))
-    }
+    }*/
 
     override suspend fun createReservation(reservation: Reservation): Reservation {
         this.reservation.add(reservation)
