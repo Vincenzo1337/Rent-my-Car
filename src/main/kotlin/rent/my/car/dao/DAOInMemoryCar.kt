@@ -52,6 +52,11 @@ object DaoInMemoryCar : DAOFacadeCar {
         }
         return null
     }
+
+    override suspend fun createCar(car: Car): Car {
+        CarDatabase.cars.put(CarDatabase.cars.size+1,car)
+        return car
+    }
 }
 
 object CarDatabase {
