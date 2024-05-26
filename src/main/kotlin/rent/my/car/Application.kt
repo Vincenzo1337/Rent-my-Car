@@ -17,4 +17,4 @@ fun Application.module() {
     configureSecurity()
     configureRouting()
 }
- 
+
