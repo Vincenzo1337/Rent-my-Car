@@ -12,8 +12,12 @@ data class Car(
     val timeBlock: List<TimeBlock>,
     val description: String,
     val ownerId: Int,
-    val owner: User? = null
+    val owner: User? = null,
+    val location: Location? = null
 )
+
+@Serializable
+data class Location(val latitude: Double, val longitude: Double)
 
 
 enum class CarCategory {
