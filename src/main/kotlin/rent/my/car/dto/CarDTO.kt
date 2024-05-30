@@ -16,5 +16,6 @@ data class HomePageCarDTO(
     val description: String,
     val ownerId: Int,
     val owner: UserDTO?,
-    val location: Location? = null
+    val location: Location? = null,
+    val isNew: Boolean = false
 )
